@@ -12,5 +12,15 @@ pubspec.lock
 # If you don't generate documentation locally you can remove this line.
 doc/api/
 
+# Flutter local file
+.flutter-plugins
+
 # Android gradle files
 android/.gradle/
+
+# Intellij
+.idea
+
+android/local\.properties
+
+ios/Pods/Manifest\.lock
