@@ -8,11 +8,11 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
   }
 }
 
-class SplashScreen extends StatelessWidget {
+/*class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     timeDilation = 3;
@@ -46,4 +46,4 @@ class SplashScreen extends StatelessWidget {
       ),
     );
   }
-}
+}*/

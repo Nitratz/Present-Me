@@ -1,26 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:present_me/profile/animation/profile_animations.dart';
 import 'package:present_me/profile/experience/experiences_page.dart';
 import 'package:present_me/utils/utils.dart';
 
 class ProfilePage extends StatelessWidget {
+  ProfilePage({@required AnimationController controller})
+      : animation = new ProfileAnimation(controller);
+
+  final ProfileAnimation animation;
+
   @override
   Widget build(BuildContext context) {
+    return new AnimatedBuilder(
+        animation: animation.controller, builder: buildContainer);
+  }
+
+  Widget buildContainer(BuildContext context, Widget child) {
     return new Container(
         width: double.infinity,
         height: double.infinity,
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(top: 24.0),
-              height: 125.0,
-              width: 125.0,
-              child: ClipOval(
-                clipper: CircleClipper(),
-                child: Hero(
-                    tag: HERO_PROFILE_PIC,
-                    transitionOnUserGestures: true,
-                    child: Image.network(PICTURE_URL, fit: BoxFit.contain)),
+            Transform(
+              transform: Matrix4.diagonal3Values(
+                  animation.avatarSize.value, animation.avatarSize.value, 1),
+              alignment: Alignment.center,
+              child: Container(
+                margin: EdgeInsets.only(top: 24.0),
+                height: 125.0,
+                width: 125.0,
+                child: ClipOval(
+                  clipper: CircleClipper(),
+                  child: Image.network(PICTURE_URL, fit: BoxFit.contain),
+                ),
               ),
             ),
 
@@ -33,15 +46,17 @@ class ProfilePage extends StatelessWidget {
               ),
               Text(TITLE,
                   style: TextStyle(
-                      color: Colors.white.withOpacity(0.9), fontSize: 14))
+                      color: Colors.white.withOpacity(0.9), fontSize: 16))
             ]),
 
             // Headline + resume
             Column(children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
-                child: CustomPaint(
-                  painter: DrawLine(),
+                child: Container(
+                  color: Colors.white,
+                  width: animation.dividerWidth.value,
+                  height: 1.0,
                 ),
               ),
               Text(HEADLINE,

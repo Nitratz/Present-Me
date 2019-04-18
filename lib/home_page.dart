@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:present_me/profile/animation/profile_animator.dart';
 import 'package:present_me/utils/my_fonts_icons.dart';
-import 'package:present_me/profile/profile_page.dart';
 import 'package:present_me/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
-          body: ProfilePage(),
+          body: ProfileAnimator(),
         ),
       ],
     );

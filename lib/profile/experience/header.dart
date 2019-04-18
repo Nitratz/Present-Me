@@ -20,7 +20,7 @@ class HeaderExperience extends StatelessWidget {
             width: 50,
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.network(mExperience.image_url)),
+                child: Image.network(mExperience.imageUrl)),
           ),
         ),
         Expanded(

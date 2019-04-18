@@ -21,18 +21,18 @@ class Experiences {
 class Experience {
   final String id;
   final String name;
-  final String image_url;
+  final String imageUrl;
   final String period;
   final String position;
   final List<String> tasks;
 
-  Experience({this.id, this.name, this.image_url, this.period, this.position, this.tasks});
+  Experience({this.id, this.name, this.imageUrl, this.period, this.position, this.tasks});
 
   factory Experience.fromJson(Map<String, dynamic> json) {
     return Experience(
         id: json['id'],
         name: json['name'],
-        image_url: json['image_url'],
+        imageUrl: json['image_url'],
         period: json['period'],
         position: json['position'],
         tasks: new List<String>.from(json['tasks']));
