@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:present_me/profile/profile_page.dart';
+import 'package:present_me/profile/profile_builder.dart';
 
 class ProfileAnimator extends StatefulWidget {
   @override
@@ -14,10 +14,9 @@ class _ArtistDetailsAnimator extends State<ProfileAnimator>
   void initState() {
     super.initState();
     _controller = new AnimationController(
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 2500),
       vsync: this,
     );
-    _controller.forward();
   }
 
   @override
@@ -28,7 +27,7 @@ class _ArtistDetailsAnimator extends State<ProfileAnimator>
 
   @override
   Widget build(BuildContext context) {
-    return ProfilePage(
+    return ProfileBuilder(
       controller: _controller,
     );
   }

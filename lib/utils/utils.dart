@@ -11,6 +11,9 @@ const LINKEDIN_PROFILE = "https://www.linkedin.com/in/maxime-liege-568817a7/";
 const GITHUB_PROFILE = "https://github.com/Nitratz";
 const EXPERIENCES_URL = "https://us-central1-present-me-a7b9b.cloudfunctions.net/getExperiences";
 
+const LIGHT_BLUE = Color.fromARGB(220, 137, 247, 254);
+const DARK_BLUE = Color.fromARGB(120, 102, 166, 255);
+
 const HERO_PROFILE_PIC = "profile_pic";
 
 class CircleClipper extends CustomClipper<Rect> {

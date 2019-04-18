@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:present_me/profile/animation/profile_animations.dart';
-import 'package:present_me/profile/experience/experiences_page.dart';
+import 'package:present_me/profile/experience/experiences_carousel.dart';
 import 'package:present_me/utils/utils.dart';
 
-class ProfilePage extends StatelessWidget {
-  ProfilePage({@required AnimationController controller})
+class ProfileBuilder extends StatefulWidget {
+  ProfileBuilder({@required AnimationController controller})
       : animation = new ProfileAnimation(controller);
 
   final ProfileAnimation animation;
 
   @override
+  _ProfileBuilderState createState() => _ProfileBuilderState();
+}
+
+class _ProfileBuilderState extends State<ProfileBuilder> {
+  @override
   Widget build(BuildContext context) {
     return new AnimatedBuilder(
-        animation: animation.controller, builder: buildContainer);
+        animation: widget.animation.controller, builder: buildContainer);
   }
 
   Widget buildContainer(BuildContext context, Widget child) {
@@ -24,7 +29,9 @@ class ProfilePage extends StatelessWidget {
           children: <Widget>[
             Transform(
               transform: Matrix4.diagonal3Values(
-                  animation.avatarSize.value, animation.avatarSize.value, 1),
+                  widget.animation.avatarSize.value,
+                  widget.animation.avatarSize.value,
+                  1),
               alignment: Alignment.center,
               child: Container(
                 margin: EdgeInsets.only(top: 24.0),
@@ -38,16 +45,24 @@ class ProfilePage extends StatelessWidget {
             ),
 
             // Name + title
-            Column(children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 8.0, bottom: 4.0),
-                child: Text(NAME,
-                    style: TextStyle(color: Colors.white, fontSize: 24)),
-              ),
-              Text(TITLE,
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.9), fontSize: 16))
-            ]),
+            Transform.translate(
+              offset: widget.animation.nameTranslate.value,
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 8.0, bottom: 4.0),
+                  child: Text(NAME,
+                      style: TextStyle(
+                          color: Colors.white
+                              .withOpacity(widget.animation.nameOpacity.value),
+                          fontSize: 24)),
+                ),
+                Text(TITLE,
+                    style: TextStyle(
+                        color: Colors.white
+                            .withOpacity(widget.animation.nameOpacity.value),
+                        fontSize: 16))
+              ]),
+            ),
 
             // Headline + resume
             Column(children: <Widget>[
@@ -55,7 +70,7 @@ class ProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
                 child: Container(
                   color: Colors.white,
-                  width: animation.dividerWidth.value,
+                  width: widget.animation.dividerWidth.value,
                   height: 1.0,
                 ),
               ),
@@ -82,7 +97,7 @@ class ProfilePage extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 32)),
                 ),
               ),
-              ExperiencesPage()
+              ExperiencesCarousel()
             ]),
 
             Column(children: <Widget>[
@@ -95,9 +110,17 @@ class ProfilePage extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 32)),
                 ),
               ),
-              ExperiencesPage()
+              ExperiencesCarousel()
             ])
           ],
         ));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    new Future.delayed(Duration(milliseconds: 1500), () {
+      widget.animation.controller.forward();
+    });
   }
 }

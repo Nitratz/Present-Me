@@ -6,18 +6,35 @@ class ProfileAnimation {
           new CurvedAnimation(
             parent: controller,
             curve: new Interval(
-              0.800,
-              1.000,
+              0.000,
+              0.500,
               curve: Curves.elasticOut,
             ),
           ),
+        ),
+        nameTranslate = new Tween(begin: Offset(0, 50), end: Offset(0, 0))
+            .animate(new CurvedAnimation(
+                parent: controller,
+                curve: new Interval(
+                  0.250,
+                  0.500,
+                  curve: Curves.decelerate,
+                ))),
+        nameOpacity = new Tween(begin: 0.0, end: 1.0).animate(
+            new CurvedAnimation(
+                parent: controller,
+                curve: new Interval(
+                    0.250,
+                    0.500,
+                    curve: Curves.bounceInOut)
+            )
         ),
         dividerWidth = new Tween(begin: 0.0, end: 280.0).animate(
           new CurvedAnimation(
             parent: controller,
             curve: new Interval(
-              0.800,
-              1.000,
+              0.500,
+              0.750,
               curve: Curves.fastOutSlowIn,
             ),
           ),
@@ -26,4 +43,6 @@ class ProfileAnimation {
   final AnimationController controller;
   final Animation<double> avatarSize;
   final Animation<double> dividerWidth;
+  final Animation<Offset> nameTranslate;
+  final Animation<double> nameOpacity;
 }

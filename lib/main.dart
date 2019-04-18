@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
-import 'package:present_me/home_page.dart';
+import 'package:present_me/profile_page.dart';
 import 'package:present_me/utils/utils.dart';
 
 void main() => runApp(MyApp());
@@ -8,7 +8,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: ProfilePage());
   }
 }
 
