@@ -49,7 +49,7 @@ android/.gradle/
 **/ios/**/profile
 **/ios/**/xcuserdata
 **/ios/.generated/
-**/ios/Flutter/App.framework/
+**/ios/Flutter/App.framework
 **/ios/Flutter/Flutter.framework
 **/ios/Flutter/Generated.xcconfig
 **/ios/Flutter/app.flx

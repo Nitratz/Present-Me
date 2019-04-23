@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:present_me/profile_page.dart';
+import 'package:present_me/redux/app_state.dart';
 import 'package:present_me/utils/utils.dart';
+import 'package:redux/redux.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  final Store<AppState> store = Store<AppState>(
+    appReducer, /* Function defined in the reducers file */
+    initialState: AppState.initial(),
+    middleware: createStoreMiddleware(),
+  );
+  runApp(MyApp());
+}
+
+
 
 class MyApp extends StatelessWidget {
   @override
