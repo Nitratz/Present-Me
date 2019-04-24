@@ -1,5 +1,5 @@
-import 'package:present_me/profile/profile_image_action.dart';
-import 'package:present_me/profile/profile_image_state.dart';
+import 'package:present_me/profile/profile_redux/profile_image_action.dart';
+import 'package:present_me/profile/profile_redux/profile_image_state.dart';
 import 'package:redux/redux.dart';
 
 final profileImageReducer = combineReducers<ProfileImageState>([

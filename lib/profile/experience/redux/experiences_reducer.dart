@@ -1,5 +1,5 @@
-import 'package:present_me/profile/experience/experience_action.dart';
-import 'package:present_me/profile/experience/experience_state.dart';
+import 'package:present_me/profile/experience/redux/experience_action.dart';
+import 'package:present_me/profile/experience/redux/experience_state.dart';
 import 'package:redux/redux.dart';
 
 final experienceReducer = combineReducers<ExperienceState>([

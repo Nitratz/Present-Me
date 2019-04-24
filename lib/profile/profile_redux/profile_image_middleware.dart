@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:present_me/profile/profile_image_action.dart';
+import 'package:present_me/profile/profile_redux/profile_image_action.dart';
 import 'package:present_me/redux/app_state.dart';
 import 'package:redux/redux.dart';
 

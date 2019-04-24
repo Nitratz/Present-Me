@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
-import 'package:present_me/profile/experience/experience_state.dart';
-import 'package:present_me/profile/profile_image_state.dart';
+import 'package:present_me/profile/experience/redux/experience_state.dart';
+import 'package:present_me/profile/profile_redux/profile_image_state.dart';
 
 class AppState {
   final ExperienceState expState;
@@ -16,10 +16,10 @@ class AppState {
 
   AppState copyWith({
     ExperienceState authState,
-    ProfileImageState signInState,
+    ProfileImageState profileState,
   }) {
     return AppState(
         expState: authState ?? this.expState,
-        profileImageState: signInState ?? this.profileImageState);
+        profileImageState: profileState ?? this.profileImageState);
   }
 }

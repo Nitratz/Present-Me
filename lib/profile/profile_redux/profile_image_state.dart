@@ -13,5 +13,5 @@ class ProfileImageState {
     );
   }
 
-  factory ProfileImageState.initial() => ProfileImageState(image: Image());
+  factory ProfileImageState.initial() => ProfileImageState(image: null);
 }

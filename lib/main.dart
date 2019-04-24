@@ -1,60 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:present_me/profile_page.dart';
 import 'package:present_me/redux/app_state.dart';
-import 'package:present_me/utils/utils.dart';
+import 'package:present_me/redux/present_me_store.dart';
 import 'package:redux/redux.dart';
 
-void main() {
-  final Store<AppState> store = Store<AppState>(
-    appReducer, /* Function defined in the reducers file */
-    initialState: AppState.initial(),
-    middleware: createStoreMiddleware(),
-  );
-  runApp(MyApp());
+void main() async {
+  var store = await createStore();
+  runApp(MyApp(store));
 }
 
+class MyApp extends StatefulWidget {
+  final Store<AppState> store;
 
+  MyApp(this.store);
 
-class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: ProfilePage());
-  }
+  _MyAppState createState() => _MyAppState();
 }
 
-/*class SplashScreen extends StatelessWidget {
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    timeDilation = 3;
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
-    });
-
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.bottomLeft,
-          end: Alignment.topRight,
-          colors: [const Color(0xff5f2c82), const Color(0xff49a09d)],
-          tileMode: TileMode.clamp,
-        ),
-      ),
-      child: Center(
-        child: Container(
-          height: 125.0,
-          width: 125.0,
-          child: ClipOval(
-              clipper: CircleClipper(),
-              child: Hero(
-                  transitionOnUserGestures: true,
-                  tag: HERO_PROFILE_PIC,
-                  child: Image.network(PICTURE_URL, fit: BoxFit.cover))),
-        ),
-      ),
-    );
+    return StoreProvider<AppState>(
+        store: widget.store,
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false, home: ProfilePage()));
   }
-}*/
+}
